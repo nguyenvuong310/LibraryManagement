@@ -1,0 +1,49 @@
+.home-background {
+  background-image: url("../assets/C4nLhI.webp");
+  height: 100vh;
+
+  .home-container {
+    width: 460px;
+    // height: 100%;
+    margin: auto; //can giua
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    height: 559px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .home-content {
+      padding: 10px;
+      .logoBK {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+        .logobk {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+      .login-divider {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-top: 1px solid #dee2e6;
+      }
+      .login-iden {
+        .login-heading {
+          font-size: 21px !important;
+          margin-bottom: 10px;
+          font-weight: 600;
+        }
+        .login-with {
+          border: 1px solid #dee2e6;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
