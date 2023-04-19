@@ -93,3 +93,23 @@
     }
   }
 }
+.card {
+  border-radius: 60px;
+  height: 498px;
+  .addbook-input {
+    input {
+      border-radius: 13px;
+    }
+  }
+  .btn-add {
+    margin-top: 15px;
+    border-radius: 13px;
+    height: 42px;
+  }
+}
+.HomePage {
+  .homepage-banner {
+    height: 400px;
+    background-image: url("../../../assets/C4nLhI.webp");
+  }
+}

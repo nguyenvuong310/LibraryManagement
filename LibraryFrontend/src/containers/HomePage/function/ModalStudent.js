@@ -58,6 +58,14 @@ class ModalUser extends Component {
         username: this.state.userName,
       };
       this.props.createNewUser(data);
+      this.setState({
+        email: "",
+        password: "",
+        name: "",
+        userName: "",
+        mssv: "",
+        rePassword: "",
+      });
     }
   };
   render() {

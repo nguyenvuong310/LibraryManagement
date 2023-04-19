@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 // import { push } from "connected-react-router";
 import { getAllBook, delBook } from "../../../services/userService";
 
-class allBook extends Component {
+class allBookStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,15 +17,23 @@ class allBook extends Component {
     try {
       let res = await getAllBook();
       console.log(res);
+      let bookAvailable = [];
+      let count = 0;
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].copies !== 0) {
+          bookAvailable[count] = res.data[i];
+          count = count + 1;
+        }
+      }
       this.setState({
-        books: res.data,
+        books: bookAvailable,
       });
     } catch (error) {
       console.log(error);
     }
   };
-  handleDelBook = async (data) => {
-    await delBook(data.id);
+  handleIssuseBook = async (data) => {
+    console.log(this.props.userInfo);
   };
   render() {
     const { books } = this.state;
@@ -69,9 +77,10 @@ class allBook extends Component {
                       <td>
                         <button
                           className="btn-del"
-                          onClick={() => this.handleDelBook(book)}
+                          onClick={() => this.handleIssueBook(book)}
+                          title="Borrow"
                         >
-                          <i className="fas fa-trash-alt"></i>
+                          <i className="fas fa-plus"></i>
                         </button>
                       </td>
                     </tr>
@@ -86,11 +95,13 @@ class allBook extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    userInfo: state.user.userInfo,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(allBook);
+export default connect(mapStateToProps, mapDispatchToProps)(allBookStudent);

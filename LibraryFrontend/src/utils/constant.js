@@ -5,6 +5,7 @@ export const path = {
   HOMEPAGE: "/home",
   DASHBOARD: "/dashboard",
   ADMINLOGIN: "/adminLogin",
+  DASHBOARDSTUDENT: "/dashboard-student",
 };
 
 export const CRUD_ACTIONS = {

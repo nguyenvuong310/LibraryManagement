@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../assets/logoBK.png";
+import logo from "../assets/logo.png";
 import "./Home.scss";
 class Home extends Component {
   render() {

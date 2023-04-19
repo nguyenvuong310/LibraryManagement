@@ -5,7 +5,7 @@ import { logout } from "../services/userService";
 import "./Sidebar.scss";
 import logo from "../assets/logo.png";
 
-class Sidebar extends Component {
+class SidebarStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ class Sidebar extends Component {
         <ul className="list-func">
           <li className="logo">
             {" "}
-            <Link to="/dashboard/">
+            <Link to="/dashboard-student">
               {" "}
               <img src={logo}></img>{" "}
             </Link>{" "}
@@ -42,43 +42,13 @@ class Sidebar extends Component {
           >
             {" "}
             <i className="fas fa-address-book text-white"></i>
-            <Link to="/dashboard/allBook"> All Books </Link>{" "}
+            <Link to="/dashboard-student/allBook-student">
+              {" "}
+              All Books{" "}
+            </Link>{" "}
           </li>
           <hr />
 
-          <li
-            className={
-              this.state.title === "ADDBOOK" ? "list_item active" : "list_item"
-            }
-            onClick={() => this.setTitle("ADDBOOK")}
-          >
-            {" "}
-            <i className="fas fa-book text-white"></i>
-            <Link to="/dashboard/addBook"> Add Book </Link>{" "}
-          </li>
-          <hr />
-          <li
-            className={
-              this.state.title === "MS" ? "list_item active" : "list_item"
-            }
-            onClick={() => this.setTitle("MS")}
-          >
-            {" "}
-            <i class="fas fa-user-graduate text-white"></i>
-            <Link to="/dashboard/manageStudent"> Manage Stu </Link>{" "}
-          </li>
-          <hr />
-          <li
-            className={
-              this.state.title === "IS" ? "list_item active" : "list_item"
-            }
-            onClick={() => this.setTitle("IS")}
-          >
-            {" "}
-            <i className="fas fa-registered text-white"></i>
-            <Link to="/dashboard/stuReqIssue"> Issue Request </Link>{" "}
-          </li>
-          <hr />
           <li
             className={
               this.state.title === "AS" ? "list_item active" : "list_item"
@@ -87,7 +57,10 @@ class Sidebar extends Component {
           >
             {" "}
             <i className="fas fa-book text-white"></i>{" "}
-            <Link to="/dashboard/allissuedBook"> All Issued Book </Link>{" "}
+            <Link to="/dashboard-student/allissuedBook-student">
+              {" "}
+              All Issued Book{" "}
+            </Link>{" "}
           </li>
           <hr />
 
@@ -120,4 +93,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarStudent);

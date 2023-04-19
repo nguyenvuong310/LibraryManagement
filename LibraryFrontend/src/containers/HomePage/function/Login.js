@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { userLoginSuccess } from "../../../store/actions";
 import "./login.scss";
 import ModalStudent from "./ModalStudent";
 import { createNewStudent } from "../../../services/userService";
@@ -43,7 +43,8 @@ class Login extends Component {
         });
       } else {
         if (res.data[0].password === this.state.password) {
-          window.location.href = "/dashboard";
+          this.props.userLoginSuccess(res.data[0]);
+          window.location.href = "/dashboard-student";
         } else {
           this.setState({
             errMessage: "wrong password",
@@ -143,9 +144,12 @@ class Login extends Component {
               <div className="col-12">
                 <span className="forgot-password">Forgot your password ?</span>
               </div>
-              <span onClick={() => this.handleAddNewStudent()}>
-                If you don't have account then plz Register
-              </span>
+              <div
+                className="col-12 register"
+                onClick={() => this.handleAddNewStudent()}
+              >
+                <span>If you don't have account then please Register</span>
+              </div>
             </div>
           </div>
         </div>
@@ -159,7 +163,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    userLoginSuccess: (userInfor) => dispatch(userLoginSuccess(userInfor)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

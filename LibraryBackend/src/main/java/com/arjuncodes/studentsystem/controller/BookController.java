@@ -29,6 +29,12 @@ public class BookController {
     	System.out.print(BookRepository);
         return BookRepository.findAll();
     }
+    @DeleteMapping("/del-books/{id}")
+    String deleteUser(@PathVariable Long id){
+ 
+    	BookRepository.deleteById(id);
+        return  "Book with id "+id+" has been deleted success.";
+    }
     
 }
 

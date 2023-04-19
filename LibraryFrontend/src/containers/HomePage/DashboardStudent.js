@@ -3,33 +3,24 @@ import { connect } from "react-redux";
 
 import { Switch, Route } from "react-router-dom";
 
-import Sidebar from "../../components/Sidebar";
-import AddBook from "./function/AddBook";
-import AllBook from "./function/AllBook";
-import AllStudent from "./function/AllStudent";
+import SidebarStudent from "../../components/SidebarStudent";
+
+import AllBookStudent from "./function/AllBookStudent";
+import HomeStudent from "./function/HomeStudent";
 import { Link } from "react-router-dom";
-import IssueRequest from "./function/IssueRequest";
-import HomePage from "./function/HomePage";
-import "./Dashboard.scss";
-class Dashboard extends Component {
+
+class DashboardStudent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isOpenSideBar: false,
-    };
+    this.state = {};
   }
-  // openSide = () => {
-  //   this.setState({
-  //     isOpenSideBar: !this.state.isOpenSideBar,
-  //   });
-  // };
   render() {
     return (
       <div>
         <div className="container-dashboard">
           <div>
             <div className="SideBar">
-              <Sidebar />
+              <SidebarStudent />
             </div>
           </div>
 
@@ -37,7 +28,7 @@ class Dashboard extends Component {
             <div className="home-header-container">
               <div className="home-header-content">
                 <div className="left-content">
-                  <span>LIBARY MANAGEMENT</span>
+                  <span>LIBARY SYSTEM</span>
                 </div>
                 <div className="center-content"></div>
                 <div className="right-content">
@@ -55,27 +46,18 @@ class Dashboard extends Component {
               </div>
             </div>
             <Switch>
-              <Route path="/dashboard/" component={HomePage} exact />
-              <Route path="/dashboard/addBook" component={AddBook} exact />
-              <Route path="/dashboard/allBook" component={AllBook} exact />
+              <Route path="/dashboard-student/" component={HomeStudent} exact />
               <Route
-                path="/dashboard/manageStudent"
-                component={AllStudent}
+                path="/dashboard-student/allBook-student"
+                component={AllBookStudent}
                 exact
               />
-              <Route path="/dashboard/issuedBook" component={AddBook} exact />
+
               <Route
-                path="/dashboard/allissuedBook"
-                component={AddBook}
+                path="/dashboard-student/allissuedBook-student"
+                component={AllBookStudent}
                 exact
               />
-              <Route
-                path="/dashboard/stuReqIssue"
-                exact
-                component={IssueRequest}
-              />
-              <Route path="/dashboard/issue_return" exact component={AddBook} />
-              <Route path="/dashboard/returnBook" exact component={AddBook} />
             </Switch>
           </div>
         </div>
@@ -92,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardStudent);

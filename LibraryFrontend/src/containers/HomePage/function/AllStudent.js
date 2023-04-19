@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-import { getAllStudent } from "../../../services/userService";
+import { getAllStudent, delStu } from "../../../services/userService";
 
 class allStudent extends Component {
   constructor(props) {
@@ -21,6 +21,9 @@ class allStudent extends Component {
       console.log(error);
     }
   }
+  handleDelBook = async (data) => {
+    await delStu(data.id);
+  };
   render() {
     const { students } = this.state;
     return (
@@ -30,7 +33,7 @@ class allStudent extends Component {
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}
           >
-            All STUDENT IN LIBARY
+            All STUDENT IN LIBRARY
           </h3>
           <br />
         </div>
@@ -42,10 +45,10 @@ class allStudent extends Component {
           >
             <thead className="thead-dark">
               <tr>
-                <th>Serial No.</th>
-                <th>Name</th>
-                <th>email</th>
                 <th>MSSV</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -53,10 +56,18 @@ class allStudent extends Component {
                 students.map((student, index) => {
                   return (
                     <tr key={student._id}>
-                      <td>{index + 1}</td>
-                      <td>{student.name}</td>
-                      <td>{student.email}</td>
                       <td>{student.mssv}</td>
+
+                      <td>{student.email}</td>
+                      <td>{student.name}</td>
+                      <td>
+                        <button
+                          className="btn-del"
+                          onClick={() => this.handleDelBook(student)}
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}

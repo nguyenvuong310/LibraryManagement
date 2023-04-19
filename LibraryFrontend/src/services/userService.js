@@ -20,6 +20,12 @@ const studentLogin = (username) => {
     `http://localhost:8080/student/username?username=${username}`
   );
 };
+const delBook = (bookId) => {
+  return axios.delete(`http://localhost:8080/del-books/${bookId}`);
+};
+const delStu = (stuId) => {
+  return axios.delete(`http://localhost:8080/student/del-student/${stuId}`);
+};
 
 export {
   getAllBook,
@@ -28,4 +34,6 @@ export {
   createNewStudent,
   getAllStudent,
   studentLogin,
+  delBook,
+  delStu,
 };

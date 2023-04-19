@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
 import { addOneBook } from "../../../services/userService";
+import "./function.scss";
 class addBook extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +49,7 @@ class addBook extends Component {
           <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
             Add a New Book
           </h2>
-          <div className="mb-3">
+          <div className="mb-3 addbook-input">
             <input
               type="text"
               placeholder="Book title"
@@ -58,7 +59,7 @@ class addBook extends Component {
               className="form-control"
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 addbook-input">
             <input
               type="text"
               placeholder="Author name"
@@ -68,7 +69,7 @@ class addBook extends Component {
               className="form-control"
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 addbook-input">
             <input
               type="text"
               placeholder="Publisher"
@@ -78,7 +79,7 @@ class addBook extends Component {
               className="form-control"
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 addbook-input">
             <input
               type="text"
               placeholder="Year"
@@ -88,7 +89,7 @@ class addBook extends Component {
               className="form-control"
             />
           </div>
-          <div className="mb-2">
+          <div className="mb-2 addbook-input">
             <input
               type="text"
               placeholder=" Number of Copies"
@@ -99,7 +100,10 @@ class addBook extends Component {
             />
           </div>
 
-          <button className="btn btn-primary" onClick={() => this.saveBook()}>
+          <button
+            className="btn btn-primary btn-add"
+            onClick={() => this.saveBook()}
+          >
             Add Book
           </button>
         </div>

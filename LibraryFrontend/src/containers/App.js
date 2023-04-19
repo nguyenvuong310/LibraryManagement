@@ -7,12 +7,13 @@ import { ToastContainer } from "react-toastify";
 
 import { path } from "../utils";
 import Dashboard from "./HomePage/Dashboard";
+import DashboardStudent from "./HomePage/DashboardStudent";
 import Home from "../routes/Home";
 // import Login from '../routes/Login';
 import AdminLogin from "../containers/HomePage/function/AdminLogin";
 import Login from "../containers/HomePage/function/Login";
 
-// import CustomScrollbars from "../components/CustomScrollbars";
+import CustomScrollbars from "../components/CustomScrollbars";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -38,15 +39,18 @@ class App extends Component {
         <Router history={history}>
           <div className="main-container">
             <div className="content-container">
-              {/* <CustomScrollbars style={{ height: "100vh", width: "100%" }}> */}
-              <Switch>
-                <Route path={path.HOME} exact component={Home} />
-                <Route path={path.LOGIN} component={Login} />
-                <Route path={path.ADMINLOGIN} component={AdminLogin} />
-                <Route path={path.DASHBOARD} component={Dashboard} />
-                {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
-              </Switch>
-              {/* </CustomScrollbars> */}
+              <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
+                <Switch>
+                  <Route path={path.HOME} exact component={Home} />
+                  <Route path={path.LOGIN} component={Login} />
+                  <Route path={path.ADMINLOGIN} component={AdminLogin} />
+                  <Route path={path.DASHBOARD} component={Dashboard} />
+                  <Route
+                    path={path.DASHBOARDSTUDENT}
+                    component={DashboardStudent}
+                  />
+                </Switch>
+              </CustomScrollbars>
             </div>
             <ToastContainer
               position="bottom-right"

@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -44,6 +41,12 @@ public class StudentController {
     @GetMapping("/getAll")
     public List<Student> list(){
         return studentService.getAllStudents();
+    }
+    @DeleteMapping("/del-student/{id}")
+    String deleteUser(@PathVariable Long id){
+ 
+    	Srepo.deleteById(id);
+        return  "Student with id "+id+" has been deleted success.";
     }
     
 }
