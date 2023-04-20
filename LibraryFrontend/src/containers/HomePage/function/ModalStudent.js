@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { studentLogin } from "../../../services/userService";
 class ModalUser extends Component {
   constructor(props) {
     super(props);
@@ -47,25 +48,32 @@ class ModalUser extends Component {
     }
     return isValid;
   };
-  handleAddNewuser = () => {
+  handleAddNewuser = async () => {
     let isValid = this.checkValidInput();
     if (isValid === true) {
-      let data = {
-        email: this.state.email,
-        mssv: this.state.mssv,
-        name: this.state.name,
-        password: this.state.password,
-        username: this.state.userName,
-      };
-      this.props.createNewUser(data);
-      this.setState({
-        email: "",
-        password: "",
-        name: "",
-        userName: "",
-        mssv: "",
-        rePassword: "",
-      });
+      let res = await studentLogin(this.state.userName);
+      console.log(res);
+      if (res.data.length < 1) {
+        let data = {
+          email: this.state.email,
+          mssv: this.state.mssv,
+          name: this.state.name,
+          password: this.state.password,
+          username: this.state.userName,
+        };
+        this.props.createNewUser(data);
+        this.setState({
+          email: "",
+          password: "",
+          name: "",
+          userName: "",
+          mssv: "",
+          rePassword: "",
+        });
+        this.toggle();
+      } else {
+        alert("account exist");
+      }
     }
   };
   render() {
@@ -82,7 +90,7 @@ class ModalUser extends Component {
         <ModalBody>
           <div className="modal-user-body">
             <div className="input-container max-width-input">
-              <lable>Email</lable>
+              <label>Email</label>
               <input
                 type="email"
                 placeholder="alo@gmail.com"
@@ -91,7 +99,7 @@ class ModalUser extends Component {
               ></input>
             </div>
             <div className="input-container ">
-              <lable>Name</lable>
+              <label>Name</label>
               <input
                 type="text"
                 onChange={(event) => this.handleOnChangeInput(event, "name")}
@@ -99,7 +107,7 @@ class ModalUser extends Component {
               ></input>
             </div>
             <div className="input-container ">
-              <lable>MSSV</lable>
+              <label>MSSV</label>
               <input
                 type="text"
                 onChange={(event) => this.handleOnChangeInput(event, "mssv")}
@@ -107,7 +115,7 @@ class ModalUser extends Component {
               ></input>
             </div>
             <div className="input-container max-width-input">
-              <lable>UserName</lable>
+              <label>UserName</label>
               <input
                 type="text"
                 onChange={(event) =>
@@ -117,7 +125,7 @@ class ModalUser extends Component {
               ></input>
             </div>
             <div className="input-container max-width-input">
-              <lable>Password</lable>
+              <label>Password</label>
               <input
                 type="password"
                 onChange={(event) =>
@@ -128,7 +136,7 @@ class ModalUser extends Component {
             </div>
 
             <div className="input-container max-width-input">
-              <lable>Re-enter Password</lable>
+              <label>Re-enter Password</label>
               <input
                 type="password"
                 onChange={(event) =>
@@ -141,8 +149,7 @@ class ModalUser extends Component {
         </ModalBody>
         <ModalFooter>
           <Button
-            color="primary"
-            className="px-3"
+            className="px-3 btn-create"
             onClick={() => this.handleAddNewuser()}
           >
             Add new

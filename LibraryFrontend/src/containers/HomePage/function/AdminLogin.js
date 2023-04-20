@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 // import { push } from "connected-react-router";
 
 import "./function.scss";
-
+import logoAdmin from "../../../assets/admin2.jpg";
 // import adminService from "../services/adminService";
 
 class adminLogin extends Component {
@@ -67,9 +67,12 @@ class adminLogin extends Component {
         <div className="adminLogin-background">
           <div className="adminLogin-container">
             <div className="adminLogin-content">
-              <div className="col-12 text-adminLogin">
-                Enter your UserName and Password{" "}
+              <div className="logo">
+                <div className="logoBK">
+                  <img src={logoAdmin} className="logo-admin"></img>
+                </div>
               </div>
+
               <div className="col-12 form-group adminLogin-input">
                 <label>UserName</label>
                 <input
@@ -116,7 +119,7 @@ class adminLogin extends Component {
                   Login
                 </button>
               </div>
-              <div className="col-12">
+              <div className="col-12 forgot">
                 <span className="forgot-password">Forgot your password ?</span>
               </div>
             </div>

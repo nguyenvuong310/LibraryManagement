@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
-import { getAllBook, delBook } from "../../../services/userService";
-
+import { getAllBook, delBook, editBook } from "../../../services/userService";
+import { toast } from "react-toastify";
+import ModalEditBook from "./ModalEditBook";
+import "./function.scss";
 class allBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
+      isOpenModalEditBook: false,
+      book: "",
     };
   }
   async componentDidMount() {
@@ -24,13 +28,34 @@ class allBook extends Component {
       console.log(error);
     }
   };
+  toggleUserModal = () => {
+    this.setState({
+      isOpenModalEditBook: !this.state.isOpenModalEditBook,
+    });
+  };
   handleDelBook = async (data) => {
     await delBook(data.id);
+    await this.getAllBookService();
+    toast.success("Delete Book Succeed!");
+  };
+  handleEditBook = (data) => {
+    console.log("check buuton ", data);
+    this.setState({
+      isOpenModalEditBook: true,
+      book: data,
+    });
+    console.log("check buuton ", this.state.book);
   };
   render() {
     const { books } = this.state;
     return (
       <div>
+        <ModalEditBook
+          isOpen={this.state.isOpenModalEditBook}
+          toggleFromParent={this.toggleUserModal}
+          putBook={this.handleEditBook}
+          currentBook={this.state.book}
+        />
         <div className="col-md-8 m-auto">
           <h3
             className="text-center bg-info p-2"
@@ -67,6 +92,12 @@ class allBook extends Component {
                       <td>{book.copies}</td>
                       <td>{book.copies > 0 ? "AVAILABLE" : "NOT AVAILABLE"}</td>
                       <td>
+                        <button
+                          className="btn-edit"
+                          onClick={() => this.handleEditBook(book)}
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
                         <button
                           className="btn-del"
                           onClick={() => this.handleDelBook(book)}

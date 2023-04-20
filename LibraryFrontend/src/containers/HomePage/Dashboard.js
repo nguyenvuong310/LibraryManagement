@@ -10,6 +10,7 @@ import AllStudent from "./function/AllStudent";
 import { Link } from "react-router-dom";
 import IssueRequest from "./function/IssueRequest";
 import HomePage from "./function/HomePage";
+import AllissuedBook from "./function/AllissuedBook";
 import "./Dashboard.scss";
 class Dashboard extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Dashboard extends Component {
               <Route path="/dashboard/issuedBook" component={AddBook} exact />
               <Route
                 path="/dashboard/allissuedBook"
-                component={AddBook}
+                component={AllissuedBook}
                 exact
               />
               <Route

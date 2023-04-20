@@ -6,7 +6,7 @@ import ModalStudent from "./ModalStudent";
 import { createNewStudent } from "../../../services/userService";
 // import adminService from "../services/adminService";
 import { studentLogin } from "../../../services/userService";
-
+import logoStudent from "../../../assets/student2.jpg";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -92,8 +92,10 @@ class Login extends Component {
         <div className="Login-background">
           <div className="Login-container">
             <div className="Login-content">
-              <div className="col-12 text-Login">
-                Enter your UserName and Password{" "}
+              <div className="logo">
+                <div className="logoBK">
+                  <img src={logoStudent} className="logo-student"></img>
+                </div>
               </div>
               <div className="col-12 form-group Login-input">
                 <label>UserName</label>
@@ -144,11 +146,16 @@ class Login extends Component {
               <div className="col-12">
                 <span className="forgot-password">Forgot your password ?</span>
               </div>
-              <div
-                className="col-12 register"
-                onClick={() => this.handleAddNewStudent()}
-              >
-                <span>If you don't have account then please Register</span>
+              <div className="col-12 register">
+                <span>
+                  If you don't have account then please{" "}
+                  <span
+                    className="register-txt"
+                    onClick={() => this.handleAddNewStudent()}
+                  >
+                    Register
+                  </span>
+                </span>
               </div>
             </div>
           </div>

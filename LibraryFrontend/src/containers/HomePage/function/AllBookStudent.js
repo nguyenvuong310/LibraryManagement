@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
-import { getAllBook, delBook } from "../../../services/userService";
-
+import { getAllBook, RequestIssue } from "../../../services/userService";
+import { toast } from "react-toastify";
 class allBookStudent extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +10,10 @@ class allBookStudent extends Component {
       books: [],
     };
   }
-  async componentDidMount() {
+  async componentDidUpdate() {
     await this.getAllBookService();
   }
+
   getAllBookService = async () => {
     try {
       let res = await getAllBook();
@@ -33,7 +34,15 @@ class allBookStudent extends Component {
     }
   };
   handleIssuseBook = async (data) => {
-    console.log(this.props.userInfo);
+    let db = {
+      author: data.author,
+      studentName: this.props.userInfo.name,
+      mssv: this.props.userInfo.mssv,
+      bookName: data.title,
+    };
+    console.log("check db ", db);
+    toast.success("pls wait for accept issued book!");
+    await RequestIssue(db);
   };
   render() {
     const { books } = this.state;
@@ -76,8 +85,7 @@ class allBookStudent extends Component {
                       <td>{book.copies > 0 ? "AVAILABLE" : "NOT AVAILABLE"}</td>
                       <td>
                         <button
-                          className="btn-del"
-                          onClick={() => this.handleIssueBook(book)}
+                          onClick={() => this.handleIssuseBook(book)}
                           title="Borrow"
                         >
                           <i className="fas fa-plus"></i>

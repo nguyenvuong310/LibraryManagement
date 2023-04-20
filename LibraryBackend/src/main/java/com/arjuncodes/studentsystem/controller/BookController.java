@@ -3,6 +3,7 @@ package com.arjuncodes.studentsystem.controller;
 
 
 import com.arjuncodes.studentsystem.model.Book;
+import com.arjuncodes.studentsystem.model.User;
 import com.arjuncodes.studentsystem.repository.BookRepository;
 
 
@@ -34,6 +35,18 @@ public class BookController {
  
     	BookRepository.deleteById(id);
         return  "Book with id "+id+" has been deleted success.";
+    }
+    @PutMapping("/put-book/{id}")
+    Book updateUser(@RequestBody Book newBook, @PathVariable("id") Long id) {
+        return BookRepository.findById(id)
+                .map(book -> {
+                	book.setAuthor(newBook.getAuthor());
+                	book.setTitle(newBook.getTitle());
+                	book.setPublisher(newBook.getPublisher());
+                	book.setYear(newBook.getYear());
+                	book.setCopies(newBook.getCopies());
+                    return BookRepository.save(book);
+                }).orElseThrow();
     }
     
 }

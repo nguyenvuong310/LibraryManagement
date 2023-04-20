@@ -8,6 +8,7 @@ import SidebarStudent from "../../components/SidebarStudent";
 import AllBookStudent from "./function/AllBookStudent";
 import HomeStudent from "./function/HomeStudent";
 import { Link } from "react-router-dom";
+import AllissuedBookStudent from "./function/AllissuedBookStudent";
 
 class DashboardStudent extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class DashboardStudent extends Component {
 
               <Route
                 path="/dashboard-student/allissuedBook-student"
-                component={AllBookStudent}
+                component={AllissuedBookStudent}
                 exact
               />
             </Switch>

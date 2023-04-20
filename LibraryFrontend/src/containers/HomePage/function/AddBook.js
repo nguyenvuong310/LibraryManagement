@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
 import { addOneBook } from "../../../services/userService";
+import { toast } from "react-toastify";
 import "./function.scss";
 class addBook extends Component {
   constructor(props) {
@@ -22,24 +23,40 @@ class addBook extends Component {
       ...copyState,
     });
   };
+  checkValidInput = () => {
+    let isValid = true;
+    let arrInput = ["title", "author", "publisher", "year", "copies"];
+    for (let i = 0; i < arrInput.length; i++) {
+      if (!this.state[arrInput[i]]) {
+        isValid = false;
+        alert("missing parameter " + arrInput[i]);
+        break;
+      }
+    }
+    return isValid;
+  };
   saveBook = async () => {
-    let data = {
-      author: this.state.author,
-      title: this.state.title,
-      year: this.state.year,
-      publisher: this.state.publisher,
-      copies: this.state.copies,
-    };
-    console.log(data);
-    await addOneBook(data);
-    this.setState({
-      id: "",
-      title: "",
-      author: "",
-      publisher: "",
-      year: "",
-      copies: "",
-    });
+    let isValid = this.checkValidInput();
+    if (isValid) {
+      let data = {
+        author: this.state.author,
+        title: this.state.title,
+        year: this.state.year,
+        publisher: this.state.publisher,
+        copies: this.state.copies,
+      };
+      console.log(data);
+      await addOneBook(data);
+      toast.success("Add Book Succeed!");
+      this.setState({
+        id: "",
+        title: "",
+        author: "",
+        publisher: "",
+        year: "",
+        copies: "",
+      });
+    }
   };
   render() {
     const { title, author, year, publisher, copies } = this.state;

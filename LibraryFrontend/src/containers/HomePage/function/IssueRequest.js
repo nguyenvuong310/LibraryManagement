@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
-import { getAllBook, delBook } from "../../../services/userService";
+import {
+  getAllRequestIssue,
+  delRequestIssue,
+  saveBookIssue,
+  editBook,
+} from "../../../services/userService";
 
 class IssueRequest extends Component {
   constructor(props) {
@@ -10,8 +15,28 @@ class IssueRequest extends Component {
       newIssuedBook: [],
     };
   }
-  async componentDidMount() {}
-
+  async componentDidMount() {
+    this.getAllIssue();
+  }
+  getAllIssue = async () => {
+    let res = await getAllRequestIssue();
+    this.setState({
+      newIssuedBook: res.data,
+    });
+  };
+  accept = async (book) => {
+    await delRequestIssue(book.id);
+    console.log(book);
+    let data = book;
+    data.copies = data.copies - 1;
+    await editBook(data);
+    this.getAllIssue();
+    await saveBookIssue(book);
+  };
+  reject = async (book) => {
+    await delRequestIssue(book.id);
+    this.getAllIssue();
+  };
   render() {
     const { newIssuedBook } = this.state;
     return (
@@ -29,10 +54,10 @@ class IssueRequest extends Component {
         <table className="table table-bordered table-responsive-sm">
           <thead className="thead-dark">
             <tr>
+              <th>MSSV</th>
+              <th>Student Name</th>
               <th>Book Name</th>
               <th>Author</th>
-              <th>Student Name</th>
-              <th>Student Branch</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -41,25 +66,21 @@ class IssueRequest extends Component {
               newIssuedBook.map((book) => {
                 return (
                   <tr key={book._id}>
-                    <td>{book.title}</td>
+                    <td>{book.mssv}</td>
+                    <td>{book.studentName}</td>
+                    <td>{book.bookName}</td>
                     <td>{book.author}</td>
-                    <td>{book.userName}</td>
-                    <td>{book.userBranch}</td>
 
                     <td>
                       <button
-                        // onClick={() =>
-                        //   dispatch(issuedReq(book._id, book.bookId))
-                        // }
+                        onClick={() => this.accept(book)}
                         className="btn btn-success"
                       >
                         Accepted
                       </button>{" "}
                       {"  "}
                       <button
-                        // onClick={() =>
-                        //   dispatch(issuedReqDeletedByAdmin(book._id))
-                        // }
+                        onClick={() => this.reject(book)}
                         className="btn btn-danger"
                       >
                         Rejected

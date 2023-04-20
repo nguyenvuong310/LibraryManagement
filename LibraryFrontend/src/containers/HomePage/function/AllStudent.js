@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { getAllStudent, delStu } from "../../../services/userService";
+import { toast } from "react-toastify";
 
 class allStudent extends Component {
   constructor(props) {
@@ -23,6 +24,8 @@ class allStudent extends Component {
   }
   handleDelBook = async (data) => {
     await delStu(data.id);
+    toast.success("Delete Student succeed!");
+    await getAllStudent();
   };
   render() {
     const { students } = this.state;
