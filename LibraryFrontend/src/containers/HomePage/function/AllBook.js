@@ -11,7 +11,9 @@ class allBook extends Component {
     this.state = {
       books: [],
       isOpenModalEditBook: false,
-      book: "",
+      book: [],
+      isDel: false,
+      isEdit: false,
     };
   }
   async componentDidMount() {
@@ -46,22 +48,29 @@ class allBook extends Component {
     });
     console.log("check buuton ", this.state.book);
   };
+  warning = () => {
+    alert(
+      "Day la du lieu hien thi mau khong thao tac duoc!! Vui long Add book de thao tac"
+    );
+  };
   render() {
     const { books } = this.state;
     return (
       <div>
-        <ModalEditBook
-          isOpen={this.state.isOpenModalEditBook}
-          toggleFromParent={this.toggleUserModal}
-          putBook={this.handleEditBook}
-          currentBook={this.state.book}
-        />
+        {this.state.isOpenModalEditBook && (
+          <ModalEditBook
+            isOpen={this.state.isOpenModalEditBook}
+            toggleFromParent={this.toggleUserModal}
+            putBook={this.handleEditBook}
+            currentBook={this.state.book}
+          />
+        )}
         <div className="col-md-8 m-auto">
           <h3
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}
           >
-            All AVAILABLE BOOk IN LIBARY
+            All BOOK IN LIBRARY
           </h3>
           <br />
         </div>
@@ -82,6 +91,21 @@ class allBook extends Component {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>0</td>
+                <td>Advanced programing</td>
+                <td>Le Dinh Thuan</td>
+                <td>1</td>
+                <td>AVAILABLE</td>
+                <td>
+                  <button className="btn-edit" onClick={() => this.warning()}>
+                    <i className="fas fa-edit"></i>
+                  </button>
+                  <button className="btn-del" onClick={() => this.warning()}>
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
               {books &&
                 books.map((book, index) => {
                   return (

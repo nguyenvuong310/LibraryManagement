@@ -17,6 +17,7 @@ class ModalEditBook extends Component {
   }
   componentDidMount() {
     let book = this.props.currentBook;
+    console.log("book from parent", book);
     if (book && !_.isEmpty(book)) {
       this.setState({
         author: book.author,

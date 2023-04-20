@@ -18,6 +18,7 @@ public class Book {
     private String year;
     private Integer copies;
 
+ 
     public Long getId() {
         return id;
     }

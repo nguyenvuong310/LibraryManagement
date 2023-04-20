@@ -27,9 +27,10 @@ class IssueRequest extends Component {
   accept = async (book) => {
     await delRequestIssue(book.id);
     console.log(book);
-    let data = book;
-    data.copies = data.copies - 1;
-    await editBook(data);
+    // let data = book;
+    // console.log("check", data);
+    // await editBook(data);
+
     this.getAllIssue();
     await saveBookIssue(book);
   };

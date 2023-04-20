@@ -48,6 +48,18 @@ public class BookController {
                     return BookRepository.save(book);
                 }).orElseThrow();
     }
+    @PutMapping("/decrease-book/{id}")
+    Book updateBook(@RequestBody Book newBook, @PathVariable("id") Long id) {
+        return BookRepository.findById(id)
+                .map(book -> {
+                	book.setAuthor(newBook.getAuthor());
+                	book.setTitle(newBook.getTitle());
+                	book.setPublisher(newBook.getPublisher());
+                	book.setYear(newBook.getYear());
+                	book.setCopies(newBook.getCopies() - 1);
+                    return BookRepository.save(book);
+                }).orElseThrow();
+    }
     
 }
 
