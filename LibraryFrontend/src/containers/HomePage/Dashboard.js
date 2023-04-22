@@ -12,6 +12,7 @@ import IssueRequest from "./function/IssueRequest";
 import HomePage from "./function/HomePage";
 import AllissuedBook from "./function/AllissuedBook";
 import "./Dashboard.scss";
+//import Footer from "./function/footer";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -78,6 +79,9 @@ class Dashboard extends Component {
               <Route path="/dashboard/issue_return" exact component={AddBook} />
               <Route path="/dashboard/returnBook" exact component={AddBook} />
             </Switch>
+            <div className="footer">
+              <span className="txt">© 2023 Library Management System</span>
+            </div>
           </div>
         </div>
       </div>

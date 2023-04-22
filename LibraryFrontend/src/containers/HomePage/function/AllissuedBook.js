@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
-import { getAllIssuedBook } from "../../../services/userService";
+import {
+  getAllIssuedBook,
+  delIssuedBooks,
+} from "../../../services/userService";
 
 class AllIssuedBook extends Component {
   constructor(props) {
@@ -20,6 +23,10 @@ class AllIssuedBook extends Component {
       IssuedBook: res.data,
     });
   };
+  delIssuedBookService = async (data) => {
+    await delIssuedBooks(data.id);
+    this.getAllIssue();
+  };
 
   render() {
     const { IssuedBook } = this.state;
@@ -33,15 +40,15 @@ class AllIssuedBook extends Component {
             padding: "10px",
           }}
         >
-          Student Requested to Admin to issue these Book
+          ALL BOOKS HAVE BEEN BORROWED
         </p>
         <table className="table table-bordered table-responsive-sm">
           <thead className="thead-dark">
             <tr>
-              <th>MSSV</th>
-              <th>Student Name</th>
               <th>Book Name</th>
               <th>Author</th>
+              <th>MSSV</th>
+              <th>Student Name</th>
 
               <th>Actions</th>
             </tr>
@@ -51,10 +58,10 @@ class AllIssuedBook extends Component {
               IssuedBook.map((book) => {
                 return (
                   <tr key={book._id}>
-                    <td>{book.mssv}</td>
-                    <td>{book.studentName}</td>
                     <td>{book.bookName}</td>
                     <td>{book.author}</td>
+                    <td>{book.mssv}</td>
+                    <td>{book.studentName}</td>
 
                     <td>
                       {"  "}
@@ -62,6 +69,7 @@ class AllIssuedBook extends Component {
                         // onClick={() =>
                         //   dispatch(issuedReqDeletedByAdmin(book._id))
                         // }
+                        onClick={() => this.delIssuedBookService(book)}
                         className="btn btn-danger"
                       >
                         Delete

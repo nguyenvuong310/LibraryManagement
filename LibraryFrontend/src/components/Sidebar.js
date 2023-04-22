@@ -30,7 +30,7 @@ class Sidebar extends Component {
             {" "}
             <Link to="/dashboard/">
               {" "}
-              <img src={logo}></img>{" "}
+              <img src={logo} onClick={() => this.setTitle("")}></img>{" "}
             </Link>{" "}
           </li>
           <hr />

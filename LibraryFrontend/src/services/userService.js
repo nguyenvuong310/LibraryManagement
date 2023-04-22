@@ -44,10 +44,12 @@ const getAllIssuedBook = () => {
 const getAllBookByStudent = (studentid) => {
   return axios.get(`http://localhost:8080/issue-mssv?mssv=${studentid}`);
 };
-const editBook = (bookId) => {
-  return axios.put(`http://localhost:8080/put-book/${bookId}`);
+const editBook = (bookId, book) => {
+  return axios.put(`http://localhost:8080/put-book/${bookId}`, book);
 };
-
+const delIssuedBooks = (dataId, data) => {
+  return axios.delete(`http://localhost:8080/del-issued/${dataId}`);
+};
 export {
   getAllBook,
   addOneBook,
@@ -64,4 +66,5 @@ export {
   getAllIssuedBook,
   getAllBookByStudent,
   editBook,
+  delIssuedBooks,
 };

@@ -14,6 +14,7 @@ class allBook extends Component {
       book: [],
       isDel: false,
       isEdit: false,
+      reset: false,
     };
   }
   async componentDidMount() {
@@ -34,6 +35,12 @@ class allBook extends Component {
     this.setState({
       isOpenModalEditBook: !this.state.isOpenModalEditBook,
     });
+  };
+  reset = () => {
+    this.setState({
+      reset: true,
+    });
+    this.getAllBookService();
   };
   handleDelBook = async (data) => {
     await delBook(data.id);
@@ -63,6 +70,7 @@ class allBook extends Component {
             toggleFromParent={this.toggleUserModal}
             putBook={this.handleEditBook}
             currentBook={this.state.book}
+            reset={this.reset}
           />
         )}
         <div className="col-md-8 m-auto">

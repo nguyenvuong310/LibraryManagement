@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { studentLogin } from "../../../services/userService";
+import { studentLogin, editBook } from "../../../services/userService";
 import { toast } from "react-toastify";
 import _ from "lodash";
 class ModalEditBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       title: "",
       author: "",
       publisher: "",
@@ -20,6 +21,7 @@ class ModalEditBook extends Component {
     console.log("book from parent", book);
     if (book && !_.isEmpty(book)) {
       this.setState({
+        id: book.id,
         author: book.author,
         title: book.title,
         year: book.year,
@@ -62,6 +64,8 @@ class ModalEditBook extends Component {
       };
       console.log(data);
       this.toggle();
+      await editBook(this.state.id, data);
+      this.props.reset();
       toast.success("Edit Book Succeed!");
     }
   };
