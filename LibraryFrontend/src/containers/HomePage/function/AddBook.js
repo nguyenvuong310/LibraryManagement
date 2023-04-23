@@ -64,7 +64,7 @@ class addBook extends Component {
       <div className=" mt-5">
         <div className="card col-md-6 m-auto p-3">
           <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-            Add a New Book
+            ADD A NEW BOOK
           </h2>
           <div className="mb-3 addbook-input">
             <input
@@ -121,7 +121,7 @@ class addBook extends Component {
             className="btn btn-primary btn-add"
             onClick={() => this.saveBook()}
           >
-            Add Book
+            ADD BOOK
           </button>
         </div>
       </div>

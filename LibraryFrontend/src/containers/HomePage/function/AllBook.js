@@ -82,7 +82,7 @@ class allBook extends Component {
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}
           >
-            All BOOK IN LIBRARY
+            ALL BOOKS IN LIBRARY
           </h3>
           <br />
         </div>

@@ -36,7 +36,7 @@ class allStudent extends Component {
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}
           >
-            All STUDENT IN LIBRARY
+            ALL STUDENTS IN LIBRARY
           </h3>
           <br />
         </div>

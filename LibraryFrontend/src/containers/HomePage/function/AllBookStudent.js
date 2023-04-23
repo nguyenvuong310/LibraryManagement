@@ -55,7 +55,7 @@ class allBookStudent extends Component {
             className="text-center bg-info p-2"
             style={{ fontFamily: "sans-serif" }}
           >
-            All AVAILABLE BOOk IN LIBARY
+            ALL AVAILABLE BOOKS IN LIBRARY
           </h3>
           <br />
         </div>

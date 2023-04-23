@@ -43,7 +43,7 @@ class Dashboard extends Component {
               <div className="home-header-content">
                 <div className="left-content">
                   <i className="fas fa-bars"></i>
-                  <span className="title-lib">LIBARY MANAGEMENT</span>
+                  <span className="title-lib">LIBRARY MANAGEMENT</span>
                 </div>
                 <div className="center-content"></div>
                 <div className="right-content">
