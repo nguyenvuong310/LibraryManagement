@@ -65,7 +65,7 @@ class Sidebar extends Component {
           >
             {" "}
             <i class="fas fa-user-graduate text-white"></i>
-            <Link to="/dashboard/manageStudent"> Manage Stu </Link>{" "}
+            <Link to="/dashboard/manageStudent"> Manage Student </Link>{" "}
           </li>
           <hr />
           <li

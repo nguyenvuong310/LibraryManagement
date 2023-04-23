@@ -17,7 +17,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenSideBar: false,
+      // isOpenSideBar: false,
     };
   }
   // openSide = () => {
@@ -25,6 +25,9 @@ class Dashboard extends Component {
   //     isOpenSideBar: !this.state.isOpenSideBar,
   //   });
   // };
+  not = () => {
+    alert("Chức năng chưa hoàn thành");
+  };
   render() {
     return (
       <div>
@@ -39,19 +42,23 @@ class Dashboard extends Component {
             <div className="home-header-container">
               <div className="home-header-content">
                 <div className="left-content">
-                  <span>LIBARY MANAGEMENT</span>
+                  <i className="fas fa-bars"></i>
+                  <span className="title-lib">LIBARY MANAGEMENT</span>
                 </div>
                 <div className="center-content"></div>
                 <div className="right-content">
                   <div className="search">
                     <input type="text" placeholder="Search" />
-                    <i className="fas fa-search"></i>
+                    <i
+                      className="fas fa-search search1"
+                      onClick={() => this.not()}
+                    ></i>
                   </div>
                   <div className="bell">
-                    <i className="far fa-bell"></i>
+                    <i className="far fa-bell" onClick={() => this.not()}></i>
                   </div>
                   <div className="setting">
-                    <i className="fas fa-cog"></i>
+                    <i className="fas fa-cog" onClick={() => this.not()}></i>
                   </div>
                 </div>
               </div>
@@ -76,12 +83,7 @@ class Dashboard extends Component {
                 exact
                 component={IssueRequest}
               />
-              <Route path="/dashboard/issue_return" exact component={AddBook} />
-              <Route path="/dashboard/returnBook" exact component={AddBook} />
             </Switch>
-            <div className="footer">
-              <span className="txt">© 2023 Library Management System</span>
-            </div>
           </div>
         </div>
       </div>

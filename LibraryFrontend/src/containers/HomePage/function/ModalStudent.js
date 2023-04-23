@@ -12,6 +12,7 @@ class ModalUser extends Component {
       userName: "",
       mssv: "",
       rePassword: "",
+      faculty: "",
     };
   }
   componentDidMount() {}
@@ -32,6 +33,7 @@ class ModalUser extends Component {
       "password",
       "name",
       "userName",
+      "faculty",
       "mssv",
       "rePassword",
     ];
@@ -60,7 +62,9 @@ class ModalUser extends Component {
           name: this.state.name,
           password: this.state.password,
           username: this.state.userName,
+          faculty: this.state.faculty,
         };
+        console.log(data);
         this.props.createNewUser(data);
         this.setState({
           email: "",
@@ -69,6 +73,7 @@ class ModalUser extends Component {
           userName: "",
           mssv: "",
           rePassword: "",
+          faculty: "",
         });
         this.toggle();
       } else {
@@ -85,7 +90,7 @@ class ModalUser extends Component {
         size="lg"
       >
         <ModalHeader toggle={() => this.toggle()}>
-          Create a new User
+          Register Account For Student
         </ModalHeader>
         <ModalBody>
           <div className="modal-user-body">
@@ -112,6 +117,14 @@ class ModalUser extends Component {
                 type="text"
                 onChange={(event) => this.handleOnChangeInput(event, "mssv")}
                 value={this.state.mssv}
+              ></input>
+            </div>
+            <div className="input-container max-width-input">
+              <label>Faculty</label>
+              <input
+                type="text"
+                onChange={(event) => this.handleOnChangeInput(event, "faculty")}
+                value={this.state.faculty}
               ></input>
             </div>
             <div className="input-container max-width-input">
@@ -152,7 +165,7 @@ class ModalUser extends Component {
             className="px-3 btn-create"
             onClick={() => this.handleAddNewuser()}
           >
-            Add new
+            Register
           </Button>{" "}
           <Button
             color="secondary"

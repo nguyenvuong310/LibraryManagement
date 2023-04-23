@@ -6,6 +6,8 @@ import {
   delRequestIssue,
   saveBookIssue,
   editBook,
+  decreaseNumBook,
+  findBook,
 } from "../../../services/userService";
 
 class IssueRequest extends Component {
@@ -25,11 +27,14 @@ class IssueRequest extends Component {
     });
   };
   accept = async (book) => {
-    await delRequestIssue(book.id);
     console.log(book);
     // let data = book;
     // console.log("check", data);
-    // await editBook(data);
+    //
+    let res = await findBook(book.bookName);
+    res = res.data[0];
+    await decreaseNumBook(res.id, res);
+    await delRequestIssue(book.id);
 
     this.getAllIssue();
     await saveBookIssue(book);
@@ -66,7 +71,7 @@ class IssueRequest extends Component {
             {newIssuedBook &&
               newIssuedBook.map((book) => {
                 return (
-                  <tr key={book._id}>
+                  <tr key={book.id}>
                     <td>{book.mssv}</td>
                     <td>{book.studentName}</td>
                     <td>{book.bookName}</td>

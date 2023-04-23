@@ -99,7 +99,7 @@ class addBook extends Component {
           <div className="mb-2 addbook-input">
             <input
               type="text"
-              placeholder="Year"
+              placeholder="Publishing Year"
               value={year}
               onChange={(event) => this.handleOnChangeInput(event, "year")}
               style={{ height: "60px" }}

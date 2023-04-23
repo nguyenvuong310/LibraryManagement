@@ -8,6 +8,7 @@ import "./function.scss";
 class allBook extends Component {
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {
       books: [],
       isOpenModalEditBook: false,
@@ -18,7 +19,10 @@ class allBook extends Component {
     };
   }
   async componentDidMount() {
-    await this.getAllBookService();
+    setTimeout(() => {
+      this._isMounted = true;
+      this._isMounted && this.getAllBookService();
+    }, 100);
   }
   getAllBookService = async () => {
     try {
@@ -93,6 +97,8 @@ class allBook extends Component {
                 <th>Serial No.</th>
                 <th>Title</th>
                 <th>Author</th>
+                <th>Publisher</th>
+                <th>Publishing year</th>
                 <th>Copies</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -101,9 +107,11 @@ class allBook extends Component {
             <tbody>
               <tr>
                 <td>0</td>
-                <td>Advanced programing</td>
-                <td>Le Dinh Thuan</td>
-                <td>1</td>
+                <td>Kĩ Thuật Lập Trình</td>
+                <td>Nguyễn Trung Trực</td>
+                <td>NXB Đại Học Quốc Gia TPHCM</td>
+                <td>2018</td>
+                <td>20</td>
                 <td>AVAILABLE</td>
                 <td>
                   <button className="btn-edit" onClick={() => this.warning()}>
@@ -117,10 +125,12 @@ class allBook extends Component {
               {books &&
                 books.map((book, index) => {
                   return (
-                    <tr key={book._id}>
+                    <tr key={book.id}>
                       <td>{index + 1}</td>
                       <td>{book.title}</td>
                       <td>{book.author}</td>
+                      <td>{book.publisher}</td>
+                      <td>{book.year}</td>
                       <td>{book.copies}</td>
                       <td>{book.copies > 0 ? "AVAILABLE" : "NOT AVAILABLE"}</td>
                       <td>

@@ -3,11 +3,13 @@ package com.arjuncodes.studentsystem.controller;
 
 
 import com.arjuncodes.studentsystem.model.Book;
-import com.arjuncodes.studentsystem.model.User;
+import com.arjuncodes.studentsystem.model.Student;
 import com.arjuncodes.studentsystem.repository.BookRepository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,6 +50,10 @@ public class BookController {
                     return BookRepository.save(book);
                 }).orElseThrow();
     }
+	@GetMapping("/find-book")
+	public ResponseEntity<List<Book>> getBookByName(@RequestParam String title) {
+		return new ResponseEntity<List<Book>>(BookRepository.findByTitle(title), HttpStatus.OK);
+	}
     @PutMapping("/decrease-book/{id}")
     Book updateBook(@RequestBody Book newBook, @PathVariable("id") Long id) {
         return BookRepository.findById(id)

@@ -51,6 +51,7 @@ class allStudent extends Component {
                 <th>MSSV</th>
                 <th>Email</th>
                 <th>Name</th>
+                <th>Faculty</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -63,6 +64,7 @@ class allStudent extends Component {
 
                       <td>{student.email}</td>
                       <td>{student.name}</td>
+                      <td>{student.faculty}</td>
                       <td>
                         <button
                           className="btn-del"

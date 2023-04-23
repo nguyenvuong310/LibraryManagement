@@ -15,8 +15,17 @@ public class Student {
     private String mssv;
     private String username;
     private String password;
+    private String faculty;
 
-    public String getMssv() {
+    public String getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+	public String getMssv() {
 		return mssv;
 	}
 

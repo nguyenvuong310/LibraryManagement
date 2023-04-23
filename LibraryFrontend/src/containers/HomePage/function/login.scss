@@ -97,11 +97,11 @@
       display: flex;
       flex-direction: column;
       width: 49%;
+      label {
+        font-weight: 600;
+        font-size: 15px;
+      }
       &.max-width-input {
-        label {
-          font-weight: 600;
-          font-size: 15px;
-        }
         width: 100%;
       }
 
@@ -121,8 +121,8 @@
   color: white;
 }
 .modal-content {
-  top: 149px;
-  height: 514px;
+  top: 127px;
+  height: 572px;
 }
 .btn-create {
   background-color: #17a2b8;

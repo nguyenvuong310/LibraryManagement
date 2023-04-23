@@ -49,7 +49,8 @@ class AllIssuedBook extends Component {
               <th>Author</th>
               <th>MSSV</th>
               <th>Student Name</th>
-
+              <th>Date</th>
+              <th>Quantity</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -62,7 +63,8 @@ class AllIssuedBook extends Component {
                     <td>{book.author}</td>
                     <td>{book.mssv}</td>
                     <td>{book.studentName}</td>
-
+                    <td>{book.createdAt}</td>
+                    <td>{1}</td>
                     <td>
                       {"  "}
                       <button

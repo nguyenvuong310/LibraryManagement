@@ -98,12 +98,33 @@
 .HomePage {
   padding: 0 82px;
   margin-bottom: 231px;
-  .vs,
-  .book,
-  .us {
-    padding: 10px 0px;
+  .title-board {
+    margin: 20px 0px;
+    font-size: 20px;
+    text-transform: uppercase;
     font-weight: 600;
-    font-size: 15px;
+    text-align: center;
+  }
+  .top-homepage {
+    padding: 46px 6px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    height: 207px;
+  }
+  .bottom-homepage {
+    padding: 46px 31px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    height: 479px;
+    .vs,
+    .book,
+    .us {
+      padding: 10px 0px;
+      font-weight: 600;
+      font-size: 15px;
+    }
   }
 }
 .footer {
@@ -147,8 +168,24 @@
     color: rgb(255, 0, 21) !important;
   }
 }
+.image {
+  border-bottom: 1px solid #cccdd2;
+  /* padding: 0 10px; */
+  margin: 0 55px;
+}
+.text-container {
+  margin-top: 33px;
+  padding: 0 47px;
+  font-size: 20px;
+  .text-title {
+    padding: 13px;
+    .label-text {
+      font-weight: 600;
+    }
+  }
+}
 .stat {
-  width: 25%;
+  width: 60%;
 }
 .stat1 {
   width: 50%;
@@ -225,6 +262,14 @@ a {
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
+}
+.box {
+  border-radius: 15px;
+  box-shadow: #4d515c !important;
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 }
 .w3-btn:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

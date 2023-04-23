@@ -15,6 +15,9 @@ class DashboardStudent extends Component {
     super(props);
     this.state = {};
   }
+  not = () => {
+    alert("Chức năng chưa hoàn thành");
+  };
   render() {
     return (
       <div>
@@ -29,19 +32,25 @@ class DashboardStudent extends Component {
             <div className="home-header-container">
               <div className="home-header-content">
                 <div className="left-content">
-                  <span>LIBARY SYSTEM</span>
+                  <i className="fas fa-bars"></i>
+                  <Link to="/dashboard-student/" className="title-lib">
+                    <span>LIBARY SYSTEM</span>
+                  </Link>{" "}
                 </div>
                 <div className="center-content"></div>
                 <div className="right-content">
                   <div className="search">
                     <input type="text" placeholder="Search" />
-                    <i className="fas fa-search"></i>
+                    <i
+                      className="fas fa-search search1"
+                      onClick={() => this.not()}
+                    ></i>
                   </div>
                   <div className="bell">
-                    <i className="far fa-bell"></i>
+                    <i className="far fa-bell" onClick={() => this.not()}></i>
                   </div>
                   <div className="setting">
-                    <i className="fas fa-cog"></i>
+                    <i className="fas fa-cog" onClick={() => this.not()}></i>
                   </div>
                 </div>
               </div>

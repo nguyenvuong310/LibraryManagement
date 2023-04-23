@@ -11,9 +11,9 @@ class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
-        <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-row-padding w3-margin-bottom top-homepage">
           <div class="w3-quarter">
-            <div class="w3-container w3-red w3-padding-16">
+            <div class="w3-container w3-red w3-padding-16 box">
               <div class="w3-left">
                 <i class="fa fa-book w3-xxxlarge"></i>
               </div>
@@ -25,7 +25,7 @@ class HomePage extends Component {
             </div>
           </div>
           <div class="w3-quarter">
-            <div class="w3-container w3-blue w3-padding-16">
+            <div class="w3-container w3-blue w3-padding-16 box">
               <div class="w3-left">
                 <i class="fa fa-book w3-xxxlarge"></i>
               </div>
@@ -37,7 +37,7 @@ class HomePage extends Component {
             </div>
           </div>
           <div class="w3-quarter">
-            <div class="w3-container w3-teal w3-padding-16">
+            <div class="w3-container w3-teal w3-padding-16 box">
               <div class="w3-left">
                 <i class="fa fa-users w3-xxxlarge"></i>
               </div>
@@ -49,7 +49,7 @@ class HomePage extends Component {
             </div>
           </div>
           <div class="w3-quarter">
-            <div class="w3-container w3-orange w3-text-white w3-padding-16">
+            <div class="w3-container w3-orange w3-text-white w3-padding-16 box">
               <div class="w3-left">
                 <i class="fa fa-users w3-xxxlarge"></i>
               </div>
@@ -62,12 +62,12 @@ class HomePage extends Component {
           </div>
         </div>
 
-        <div class="w3-container">
-          <div className="title">Thống kê</div>
+        <div class="w3-container bottom-homepage">
+          <div className="title-board">Thống kê</div>
           <div className="vs">New Visitors</div>
           <div class="w3-grey">
             <div class="w3-container w3-center w3-padding w3-green stat">
-              25%
+              60%
             </div>
           </div>
 

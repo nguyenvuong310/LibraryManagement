@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 @Entity
 public class BookIssued {
 	@Id
@@ -19,9 +22,24 @@ public class BookIssued {
     private String bookName;
     private String mssv;
     @CreationTimestamp
+    @JsonFormat (pattern = "dd-MM-yyyy",shape = Shape.STRING)
     private LocalDateTime createdAt;
-    @UpdateTimestamp
+    @JsonFormat (pattern = "yyyy-MM-dd",shape = Shape.STRING)
+	@UpdateTimestamp
     private LocalDateTime updatedAt;
+    public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
     public Long getId() {
 		return id;
 	}

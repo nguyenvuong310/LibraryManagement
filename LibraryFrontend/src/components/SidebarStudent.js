@@ -26,7 +26,7 @@ class SidebarStudent extends Component {
     return (
       <div style={{ marginTop: "10%" }}>
         <ul className="list-func">
-          <li className="logo">
+          <li className="logo" onClick={() => this.setTitle("")}>
             {" "}
             <Link to="/dashboard-student">
               {" "}

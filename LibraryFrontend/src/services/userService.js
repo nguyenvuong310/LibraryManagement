@@ -50,6 +50,12 @@ const editBook = (bookId, book) => {
 const delIssuedBooks = (dataId, data) => {
   return axios.delete(`http://localhost:8080/del-issued/${dataId}`);
 };
+const decreaseNumBook = (bookId, book) => {
+  return axios.put(`http://localhost:8080/decrease-book/${bookId}`, book);
+};
+const findBook = (title) => {
+  return axios.get(`http://localhost:8080/find-book?title=${title}`);
+};
 export {
   getAllBook,
   addOneBook,
@@ -67,4 +73,6 @@ export {
   getAllBookByStudent,
   editBook,
   delIssuedBooks,
+  decreaseNumBook,
+  findBook,
 };

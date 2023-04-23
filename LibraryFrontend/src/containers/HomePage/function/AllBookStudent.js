@@ -6,18 +6,20 @@ import { toast } from "react-toastify";
 class allBookStudent extends Component {
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {
       books: [],
     };
   }
   async componentDidUpdate() {
-    await this.getAllBookService();
+    this._isMounted = true;
+    this._isMounted && this.getAllBookService();
   }
 
   getAllBookService = async () => {
     try {
       let res = await getAllBook();
-      console.log(res);
+
       let bookAvailable = [];
       let count = 0;
       for (let i = 0; i < res.data.length; i++) {
@@ -77,7 +79,7 @@ class allBookStudent extends Component {
               {books &&
                 books.map((book, index) => {
                   return (
-                    <tr key={book._id}>
+                    <tr key={book.id}>
                       <td>{index + 1}</td>
                       <td>{book.title}</td>
                       <td>{book.author}</td>
