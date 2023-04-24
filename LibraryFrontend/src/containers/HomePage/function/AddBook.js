@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { push } from "connected-react-router";
-import { addOneBook } from "../../../services/userService";
+import { addOneBook, findBook } from "../../../services/userService";
 import { toast } from "react-toastify";
 import "./function.scss";
 class addBook extends Component {
@@ -37,25 +37,34 @@ class addBook extends Component {
   };
   saveBook = async () => {
     let isValid = this.checkValidInput();
-    if (isValid) {
-      let data = {
-        author: this.state.author,
-        title: this.state.title,
-        year: this.state.year,
-        publisher: this.state.publisher,
-        copies: this.state.copies,
-      };
-      console.log(data);
-      await addOneBook(data);
-      toast.success("Add Book Succeed!");
-      this.setState({
-        id: "",
-        title: "",
-        author: "",
-        publisher: "",
-        year: "",
-        copies: "",
-      });
+    let res = await findBook(this.state.title);
+    if (res.data.length === 0) {
+      if (this.state.copies <= 0) {
+        alert("Please re-enter the number of books");
+      } else {
+        if (isValid) {
+          let data = {
+            author: this.state.author,
+            title: this.state.title,
+            year: this.state.year,
+            publisher: this.state.publisher,
+            copies: this.state.copies,
+          };
+          console.log(data);
+          await addOneBook(data);
+          toast.success("Add Book Succeed!");
+          this.setState({
+            id: "",
+            title: "",
+            author: "",
+            publisher: "",
+            year: "",
+            copies: "",
+          });
+        }
+      }
+    } else {
+      alert("The book is available in the library");
     }
   };
   render() {

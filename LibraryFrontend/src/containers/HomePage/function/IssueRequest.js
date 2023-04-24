@@ -82,14 +82,14 @@ class IssueRequest extends Component {
                         onClick={() => this.accept(book)}
                         className="btn btn-success"
                       >
-                        Accepted
+                        Accept
                       </button>{" "}
                       {"  "}
                       <button
                         onClick={() => this.reject(book)}
                         className="btn btn-danger"
                       >
-                        Rejected
+                        Reject
                       </button>
                     </td>
                   </tr>
