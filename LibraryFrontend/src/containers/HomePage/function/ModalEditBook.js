@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Alert,
+} from "reactstrap";
 import { studentLogin, editBook } from "../../../services/userService";
 import { toast } from "react-toastify";
 import _ from "lodash";
@@ -50,6 +57,10 @@ class ModalEditBook extends Component {
         break;
       }
     }
+    if (this.state[arrInput[4]] < 0) {
+      isValid = false;
+      alert("Vui lòng nhập lại số lượng sách");
+    }
     return isValid;
   };
   handleEditBook = async () => {
@@ -86,6 +97,7 @@ class ModalEditBook extends Component {
                 type="txt"
                 onChange={(event) => this.handleOnChangeInput(event, "title")}
                 value={this.state.title}
+                disabled
               ></input>
             </div>
             <div className="input-container max-width-input">

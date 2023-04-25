@@ -32,12 +32,17 @@ class IssueRequest extends Component {
     // console.log("check", data);
     //
     let res = await findBook(book.bookName);
-    res = res.data[0];
-    await decreaseNumBook(res.id, res);
-    await delRequestIssue(book.id);
-
-    this.getAllIssue();
-    await saveBookIssue(book);
+    if (res.data.length == 0) {
+      alert("The book is no longer in the library");
+      await delRequestIssue(book.id);
+      this.getAllIssue();
+    } else {
+      res = res.data[0];
+      await decreaseNumBook(res.id, res);
+      await delRequestIssue(book.id);
+      this.getAllIssue();
+      await saveBookIssue(book);
+    }
   };
   reject = async (book) => {
     await delRequestIssue(book.id);
@@ -55,7 +60,7 @@ class IssueRequest extends Component {
             padding: "10px",
           }}
         >
-          Student Requested to Admin to issue these Book
+          STUDENT REQUESTED TO ADMIN TO ISSUE THESE BOOK
         </p>
         <table className="table table-bordered table-responsive-sm">
           <thead className="thead-dark">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { studentLogin } from "../../../services/userService";
+import { toast } from "react-toastify";
 class ModalUser extends Component {
   constructor(props) {
     super(props);
@@ -75,6 +76,7 @@ class ModalUser extends Component {
           rePassword: "",
           faculty: "",
         });
+        toast.success("You have successfully registered !!");
         this.toggle();
       } else {
         alert("account exist");
