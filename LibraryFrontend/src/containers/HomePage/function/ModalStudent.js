@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { studentLogin } from "../../../services/userService";
+import {
+  studentLogin,
+  findStudentByMssv,
+  findStudentByEmail,
+} from "../../../services/userService";
 import { toast } from "react-toastify";
 class ModalUser extends Component {
   constructor(props) {
@@ -47,7 +51,7 @@ class ModalUser extends Component {
     }
     if (this.state.password !== this.state.rePassword) {
       isValid = false;
-      alert("diff pass");
+      alert("passwords are not the same");
     }
     return isValid;
   };
@@ -55,6 +59,16 @@ class ModalUser extends Component {
     let isValid = this.checkValidInput();
     if (isValid === true) {
       let res = await studentLogin(this.state.userName);
+      let resStudent = await findStudentByMssv(this.state.mssv);
+      let resEmail = await findStudentByEmail(this.state.email);
+      if (resEmail.data.length >= 1) {
+        alert("Email exist");
+        return;
+      }
+      if (resStudent.data.length >= 1) {
+        alert("MSSV exist");
+        return;
+      }
       console.log(res);
       if (res.data.length < 1) {
         let data = {

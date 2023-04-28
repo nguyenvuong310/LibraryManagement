@@ -32,6 +32,10 @@ public class StudentController {
 	public ResponseEntity<List<Student>> getStudentsByUserName(@RequestParam String username) {
 		return new ResponseEntity<List<Student>>(Srepo.findByUsername(username), HttpStatus.OK);
 	}
+	@GetMapping("/email")
+	public ResponseEntity<List<Student>> getStudentsByEmail(@RequestParam String email) {
+		return new ResponseEntity<List<Student>>(Srepo.findByEmail(email), HttpStatus.OK);
+	}
     @PostMapping("/add")
     public String add(@RequestBody Student student){
         studentService.saveStudent(student);

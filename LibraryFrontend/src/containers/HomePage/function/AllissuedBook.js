@@ -40,7 +40,7 @@ class AllIssuedBook extends Component {
             padding: "10px",
           }}
         >
-          ALL BOOKS HAVE BEEN BORROWED
+          ALL BOOKS LOANED
         </p>
         <table className="table table-bordered table-responsive-sm">
           <thead className="thead-dark">

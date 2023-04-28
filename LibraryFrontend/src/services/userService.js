@@ -56,6 +56,12 @@ const decreaseNumBook = (bookId, book) => {
 const findBook = (title) => {
   return axios.get(`http://localhost:8080/find-book?title=${title}`);
 };
+const findStudentByMssv = (mssv) => {
+  return axios.get(`http://localhost:8080/student/mssv?mssv=${mssv}`);
+};
+const findStudentByEmail = (email) => {
+  return axios.get(`http://localhost:8080/student/email?email=${email}`);
+};
 export {
   getAllBook,
   addOneBook,
@@ -75,4 +81,6 @@ export {
   delIssuedBooks,
   decreaseNumBook,
   findBook,
+  findStudentByMssv,
+  findStudentByEmail,
 };

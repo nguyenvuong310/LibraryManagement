@@ -7,11 +7,16 @@ import { toast } from "react-toastify";
 class allStudent extends Component {
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {
       students: [],
     };
   }
   async componentDidMount() {
+    this._isMounted = true;
+    this._isMounted && this.getAllStudentService();
+  }
+  getAllStudentService = async () => {
     try {
       let res = await getAllStudent();
       console.log(res);
@@ -21,11 +26,11 @@ class allStudent extends Component {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   handleDelBook = async (data) => {
     await delStu(data.id);
     toast.success("Delete Student succeed!");
-    await getAllStudent();
+    this.getAllStudentService();
   };
   render() {
     const { students } = this.state;
